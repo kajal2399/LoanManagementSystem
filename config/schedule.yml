@@ -2,6 +2,6 @@ interest_calculation_job:
   cron: "*/5 * * * *"
   class: "InterestCalculationJob"
   queue: default
-# loan_debit_job:
-#   cron: "*/1 * * * *" 
-#   class: "LoanDebitJob"
+loan_debit_job:
+  cron: "*/1 * * * *" 
+  class: "LoanDebitJob"
