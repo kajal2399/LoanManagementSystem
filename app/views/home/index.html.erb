@@ -1,0 +1,18 @@
+<h1>Welcome to the Loan Management System</h1>
+<% if user_signed_in? %>
+  <p>Hello, <%= current_user.email %></p>
+  <% if current_user.admin? %>
+    <%= link_to 'Admin Dashboard', admin_dashboard_path %>
+  <% else %>
+    <div>
+    <%= link_to 'Your Profile', user_profile_path %>
+    </div>
+    <div>
+      <%= link_to 'go to loans', loans_path %>
+    </div>
+  <% end %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign In', new_user_session_path %> or
+  <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>

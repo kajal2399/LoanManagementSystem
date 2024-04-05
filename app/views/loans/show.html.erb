@@ -1,0 +1,20 @@
+<h1>Loan Details</h1>
+<p><strong>Amount:</strong> <%= @loan.amount %></p>
+<p><strong>Interest Rate:</strong> <%= @loan.interest_rate %>%</p>
+<p><strong>Status:</strong> <%= @loan.state.humanize %></p>
+
+<!-- Show options only if the loan is approved -->
+<% if @loan.approved? %>
+  <%= form_with(model: @loan, url: confirm_loan_path(@loan), method: :patch) do |form| %>
+    <%= form.submit "Confirm Loan" %>
+  <% end %>
+  <%= form_with(model: @loan, url: reject_loan_path(@loan), method: :patch) do |form| %>
+    <%= form.submit "Reject Loan", data: { confirm: "Are you sure you want to reject this loan?" } %>
+  <% end %>
+<% end %>
+
+<% if @loan.state == 'open' %>
+  <%= form_with(model: @loan, url: repay_loan_path(@loan), method: :patch) do |form| %>
+    <%= form.submit "Repay Loan", data: { confirm: "Are you sure you want to repay and close this loan?" } %>
+  <% end %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= form_with(model: @loan, local: true) do |f| %>
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+
+  <%= f.submit "Request Loan" %>
+<% end %>

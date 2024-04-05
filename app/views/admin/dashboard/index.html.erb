@@ -1,0 +1,5 @@
+<h1>Admin Dashboard</h1>
+<p>Welcome, <%= current_user.email %></p>
+
+<!-- Add a link to view all loan requests -->
+<%= link_to 'View Loan Requests', admin_loans_path, class: 'button' %>

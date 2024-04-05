@@ -1,0 +1,28 @@
+<h1>Loan Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Amount</th>
+      <th>Requested At</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.id %></td>
+        <td><%= loan.user.email %></td>
+        <td><%= number_to_currency(loan.amount) %></td>
+        <td><%= loan.created_at.strftime("%b %d, %Y") %></td>
+        <td><%= loan.state.humanize %></td>
+        <td>
+          <%= link_to 'View', admin_loan_path(loan) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
